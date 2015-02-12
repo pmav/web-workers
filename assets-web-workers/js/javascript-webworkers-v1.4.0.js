@@ -297,7 +297,7 @@
      */
     WORKER = {
 
-        scriptFilename : "assets/js/javascript-webworkers-v1.4.0.js", // Web Worker script.
+        scriptFilename : "assets-web-workers/js/javascript-webworkers-v1.4.0.js", // Web Worker script.
 
 
         /**
