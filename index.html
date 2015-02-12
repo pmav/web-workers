@@ -1,0 +1,156 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+  <head>
+    <title>Javascript Web Workers Test</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+    <link type="text/css" href="assets/css/style.css" rel="stylesheet">
+    <link type="text/css" href="assets/css/ui-lightness/jquery-ui-1.7.2.custom.css" rel="stylesheet">
+
+    <script type="text/javascript" src="assets/js/javascript-webworkers-v1.4.0.js"></script>
+
+    <script type="text/javascript" src="assets/js/jquery-1.3.2.min.js"></script>
+    <script type="text/javascript" src="assets/js/jquery-ui-1.7.2.custom.min.js"></script>
+    <script type="text/javascript" src="assets/js/javascript-webworkers-ui.js"></script>
+  </head>
+  <body>
+
+    <div id="wrapper">
+      <div id="header">
+        <h1>Javascript Web Workers Test v1.4.0</h1>
+      </div>
+
+      <div id="main">
+
+        <div class="box">
+          <h2>1) How many Web Workers?</h2>
+          <div class="sliderContainer">
+            <div id="slider1"></div>
+          </div>
+          <span id="webWorkersNumber"></span> Web Workers (each Web Worker launches a new a <a href="#thread">thread</a>).
+        </div>
+
+        <div class="box">
+            <h2>2) Test size? Calculate <code>a<sup>b</sup></code> mod <code>m</code> using the Chinese Remainder Theorem (<a href="#crt">info</a>)</h2>
+          <div class="sliderContainer">
+            <div id="slider2"></div>
+          </div>
+          This test will calculate 2<sup><span id="powerNumber"></span></sup> mod 97777 using <span id="webWorkersNumber2"></span>, one per Web Worker.
+        </div>
+
+        <div class="box">
+          <h2>3) Run</h2>
+          <input id="runTest" value="Run Test" type="button"> This may take a while, depending on the size of the test (tests bigger than 2<sup>2048M</sup> may be slow).
+        </div>
+
+        <div class="box">
+          <h2>Results</h2>
+          For better results run the same test more than once.
+          <div class="results" id="results">
+            <code id="log"></code>
+          </div>
+        </div>
+
+        <div class="box">
+          <h2>Benchmarks</h2>
+
+          <div class="text">
+            <h4>Run</h4>
+			This benchmark will run 50 tests (size: 2<sup>2048M</sup>) with a variable number of Web Workers: 1, 2, 4, 8 and 16 (may take a while).<br><br>
+			<input id="runBenchmark" value="Run Benchmark" type="button">
+			<p></p>
+			<div class="results" id="benchmark-results">
+			  <code id="benchmark-log"></code>
+			</div>
+          </div>
+
+          <div class="text-end">
+            <h4>Results (using Safari 5.0)</h4>
+            <p></p>
+
+            <p>1) <span class="link" onclick="JQ.show('#test-1-1', this)">show</span> - <strong>Intel Core i7-860 </strong> (2.8 GHz, quad core, HT) [ <a href="http://ark.intel.com/Product.aspx?id=41316">ark.intel.com</a> ]</p>
+            <p class="h" id="test-1-1">
+              <code>
+Benchmark Group #5 average: 3325 ms, 16 Workers [16%]<br>
+Benchmark Group #4 average: 3338 ms, 8 Workers [16%]<br>
+Benchmark Group #3 average: 6054 ms, 4 Workers [29%]<br>
+Benchmark Group #2 average: 10920 ms, 2 Workers [52%]<br>
+Benchmark Group #1 average: 20836 ms, 1 Worker [Standart Test, 100%]
+              </code>
+            </p>
+
+          </div>
+
+        </div>
+
+        <div class="box">
+          <h2>Information</h2>
+
+          <div class="text">
+            <h4>How it Works</h4>
+            <p>
+                This example is quite simple: it launches <code>n</code> Web Workers (threads) and each one verifies a portion of the problem set (in this case, each Web Worker computes part of a<sup>b</sup> mod c).
+            </p>
+            <p>
+              Example:<br>
+              <code>
+                Running 3 Web Workers, using <code>2<sup>10</sup> mod 7</code> as the problem:<br>
+                . Web Worker #1 will compute 2<sup>4</sup> mod 7;<br>
+                . Web Worker #2 will compute 2<sup>3</sup> mod 7;<br>
+                . Web Worker #3 will compute 2<sup>3</sup> mod 7.<br>
+                In the end the main thread will use all three results and compute the final one. This can be seen as a map/reduce problem (<a href="#mr">info</a>).
+              </code>
+            </p>
+          </div>
+
+          <div class="text">
+            <h4>Source Code</h4>
+            <p>
+              All JavaScript source code is online <a href="source/" title="Source Code">here</a> (except UI code).
+            </p>
+          </div>
+
+          <div class="text">
+            <h4>Changelog</h4>
+            <dl>
+                <dt>v1.4.0 (21/Jun/2010)</dt>
+                <dd>New algorithm (a<sup>b</sup> mod c). This new algorithm truly uses multiple cores to achive one single result.</dd>
+
+                <dt>v1.3.1 (07/Mar/2010)</dt>
+                <dd>This version is now compatible with: <strong>Firefox 3.5+</strong> (3.6 and 3.7), <strong>Google Chrome 4+</strong> (5 dev) and <strong>Safari 4.0.4+</strong>.<br></dd>
+
+                <dt>v1.3.0 (17/Oct/2009)</dt>
+                <dd>First public release, only compatible with Firefox.</dd>
+            </dl>
+          </div>
+
+          <div class="text-end">
+            <h4>Links</h4>
+            <ol>
+              <li> <a href="https://developer.mozilla.org/En/Using_web_workers" title="Mozilla Developer Center - Using web workers">Mozilla Developer Center - Using web workers</a></li>
+              <li> <a href="https://developer.mozilla.org/web-tech/2008/09/04/web-workers-part-1/" title="Web Tech Blog - Web Workers, Part 1">Web Tech Blog - Web Workers, Part 1</a></li>
+              <li> <a href="https://developer.mozilla.org/web-tech/2008/12/04/web-workers-part-2/" title="Web Tech Blog - Web Workers, Part 2">Web Tech Blog - Web Workers, Part 2</a></li>
+              <li> <a href="https://developer.mozilla.org/web-tech/2009/01/05/web-workers-part-3/" title="Web Tech Blog - Web Workers, Part 3">Web Tech Blog - Web Workers, Part 3</a></li>
+              <li> <a href="http://eligrey.com/blog/projects/jsandbox/" title="Elijah Grey jsandbox">Elijah Grey jsandbox</a> (<a href="http://code.eligrey.com/jsandbox/latest/jsandbox.js">jsandbox.js</a>)</li>
+              <li> <a href="http://blog.klaus.pro.br/2009/ler/web-workers-threads-em-javascript/index.html" title="Web Workers - Threads em Javascript - Klaus Paiva">Web Workers - Threads em Javascript - Klaus Paiva</a> (lang: pt)</li>
+              <li> <a href="http://htmlhelp.com/tools/validator/doctype.html" title="Choosing a DOCTYPE">Choosing a DOCTYPE</a></li>
+              <li> <a href="http://jqueryui.com" title="JQuery User Interface">JQuery User Interface</a></li>
+              <li> <a href="http://en.wikipedia.org/wiki/Chinese_remainder_theorem" title="Wikipedia - Chinese Remainder Theorem" id="crt">Wikipedia - Chinese Remainder Theorem</a></li>
+              <li> <a href="http://en.wikipedia.org/wiki/Thread_%28computer_science%29" title="Wikipedia - Thread" id="thread">Wikipedia -  Thread</a></li>
+              <li> <a href="http://en.wikipedia.org/wiki/Map_reduce" title="Wikipedia - Map Reduce" id="mr">Wikipedia - Map Reduce</a></li>
+            </ol>
+          </div>
+
+        </div>
+      </div>
+      <div id="footer">Javascript Web Workers Test v1.4.0 | <a href="http://pmav.eu">pmav.eu</a> | 21/Jun/2010 | <a href="http://validator.w3.org/check?uri=referer">Valid HTML 4.01 Strict</a> | <a href="http://pmav.eu/stuff/javascript-webworkers-1.3.1/" title="Javascript Webworkers">Old version v1.3.1</a>
+        <p>
+          <em>This work is licensed under a <a rel="license" href="assets/LICENSE">MIT License</a>.</em>
+        </p>
+      </div>
+    </div>
+
+    <script type="text/javascript">var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www."); document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));</script>
+    <script type="text/javascript">try { var pageTracker = _gat._getTracker("UA-284702-17"); pageTracker._trackPageview(); } catch(err) {}</script>
+  </body>
+</html>

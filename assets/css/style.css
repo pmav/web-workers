@@ -1,0 +1,134 @@
+/**
+ * Firefox Web Workers Example v1.4.0
+ *
+ * http://pmav.eu/stuff/javascript-webworkers
+ *
+ * pmav, 2009-2010
+ */
+
+
+body {
+  font: 14px "Helvetica Neue", "Arial", sans-serif;
+  color: #000000;
+}
+
+a {
+  color: #0000FF;
+}
+
+a:target {
+  background: #FFFF00;
+}
+
+.h {
+  display: none;
+}
+
+#message {
+  background: #EE0000;
+  margin: 0 0 20px 0;
+  font-weight: bold;
+  color: #FFFFFF;
+  padding: 6px;
+}
+
+#message a {
+  color: #FFFFFF;
+}
+
+#wrapper {
+  margin: auto;
+  width: 800px;
+}
+
+/* -------------------------------------- */
+
+#header {
+  border-bottom: 4px solid #000000;
+  margin: 20px 0;
+}
+
+#header h1 {
+  margin: 0;
+}
+
+/* -------------------------------------- */
+
+#main .box {
+  border: 1px solid #DDDDDD;
+  background: #F5F5F5;
+  margin: 0 0 40px 0;
+  padding: 6px;
+}
+
+#main .box h2 {
+  margin: 0 0 14px 0;
+}
+
+#main .box h4 {
+  border-bottom: 1px solid #DDDDDD;
+  margin: 0;
+}
+
+#main .box p {
+  margin-top: 4px;
+}
+
+#main .box div.text {
+  margin: 0 0 40px 0;
+}
+
+#main .box div.text-end {
+  margin: 0 0 0 0;
+}
+
+#main .box .sliderContainer {
+  margin: 0 auto 20px;
+  width: 98%;
+}
+
+#main .box input {
+  border-top: 2px solid #CCCCCC;
+  border-right: 2px solid #CCCCCC;
+  border-bottom: 2px solid #666666;
+  border-left: 2px solid #666666;
+  background: #EEEEEE;
+  font-size: 18px;
+  cursor: pointer;
+}
+
+#main .box .results {
+  border: 1px solid #EEEEEE;
+  background: #FFFFFF;
+  overflow: auto;
+  height: 100px;
+  padding: 5px;
+}
+
+#main .box .link {
+  text-decoration: underline;
+  cursor: pointer;
+  color: blue;
+}
+
+#main dl {
+    margin: 4px 0 0 0;
+}
+
+#main dl dd {
+    margin: 0 0 12px 14px;
+}
+
+#main ol {
+    margin: 4px 0 0 0;
+    padding: 0 0 0 28px;
+}
+
+
+/* -------------------------------------- */
+
+#footer {
+  border-top: 1px solid #000000;
+  padding: 2px 0;
+  margin: 20px 0 0;
+}

@@ -1,0 +1,55 @@
+body {
+  font: 14px "Arial", sans-serif;
+  color: #000000;
+}
+
+a {
+  color: #0000FF;
+}
+
+a:target {
+  background: #FFFF00;
+}
+
+#wrapper {
+  margin: auto;
+  width: 800px;
+}
+
+/* -------------------------------------- */
+
+#header {
+  border-bottom: 4px solid #000000;
+  margin: 20px 0;
+}
+
+#header h1 {
+  margin: 0;
+}
+
+/* -------------------------------------- */
+
+#main .box {
+  border: 1px solid #DDDDDD;
+  background: #F5F5F5;
+  margin: 0 0 40px 0;
+  padding: 6px;
+}
+
+#main .box h2 {
+  margin: 0 0 20px 0;
+}
+
+#main .box .link {
+  text-decoration: underline;
+  cursor: pointer;
+  color: blue;
+}
+
+/* -------------------------------------- */
+
+#footer {
+  border-top: 1px solid #000000;
+  padding: 2px 0;
+  margin: 20px 0;
+}
